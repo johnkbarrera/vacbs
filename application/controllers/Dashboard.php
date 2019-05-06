@@ -14,10 +14,41 @@ class Dashboard extends CI_Controller {
 		if ($this->session->userdata("login")){
 
 			#PARA EL PRODUCTOR
-			$this->load->view('layouts/header');
-			$this->load->view('users/panel');
-			$this->load->view('layouts/footer');
+			if ($this->session->userdata("perfil") == 'productor'){
 
+				# Donut
+				$data_donut = $this->Reporte_model->getDonut();
+				$data_bar = $this->Reporte_model->getBar();
+		
+				/*foreach ($DonutM as $row) {
+					$data[] = array(
+						'nombre' => $row->nombre,
+						'registro' => $row->registro
+					);
+				}; */
+				$data_encode_donut = json_encode($data_donut);	
+				$data_encode_bar = json_encode($data_bar);
+				//echo $data_encode;
+				$data = array(
+					'donut' => $data_encode_donut,     // nombre array para vista
+					'bar' => $data_encode_bar
+				);
+
+
+				$this->load->view('layouts/header');
+				$this->load->view('users/panel_productor');
+				$this->load->view('layouts/footer');
+				$this->load->view('users/scripts_productor',$data);
+
+
+			}
+			#PARA EL ADMIN
+			if ($this->session->userdata("perfil") == 'admin'){
+				$this->load->view('layouts/header');
+				$this->load->view('users/panel_admin');
+				$this->load->view('layouts/footer');
+				$this->load->view('users/scripts_admin');
+			}
 		}
 		else{
 			redirect(base_url()."home");

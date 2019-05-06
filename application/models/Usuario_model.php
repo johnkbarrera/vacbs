@@ -5,10 +5,10 @@ class Usuario_model extends CI_Model {
 
 	public function login($usuario,$password){
 		#ENVIAMOS A LAS COLUNAS DE LA BD
-		$this->db->where("usuario_nick",$usuario);
-		$this->db->where("usuario_pass",$password);
+		$this->db->where("usuario",$usuario);
+		$this->db->where("contrasena",$password);
 
-		$resultados = $this->db->get("usuarios");
+		$resultados = $this->db->get("usuario");
 		if ($resultados->num_rows() > 0){
 			return $resultados->row();
 		}
