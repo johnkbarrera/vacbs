@@ -10,57 +10,16 @@
         | Your Page Content Here |
         -------------------------->
 
-          <div class="row">
-            <div class="col-md-4">
-              <!-- Horizontal Form -->
-              <div class="box">
-                <div class="box-header with-border">
-                  <h3 class="box-title">¿Ya tienes tu usuario?</h3>
-                </div>
-                <!-- /.box-header -->
-                <!-- form start -->
-                <form class="form-horizontal">
-                  <div class="box-body">
-                    <div class="form-group">
-                      <label for="inputEmail3" class="col-sm-3 control-label">Usuario</label>
-
-                      <div class="col-sm-9">
-                        <input type="email" class="form-control" id="inputEmail3" placeholder="Email">
-                      </div>
-                    </div>
-                    <div class="form-group">
-                      <label for="inputPassword3" class="col-sm-3 control-label">Contraseña</label>
-
-                      <div class="col-sm-9">
-                        <input type="password" class="form-control" id="inputPassword3" placeholder="Password">
-                      </div>
-                    </div>
-                    <div class="form-group">
-                      <div class="col-sm-offset-3 col-sm-9">
-                        <a href="">* Olvide mi contraseña</a>
-                      </div>
-                    </div>
-                  </div>
-                  <!-- /.box-body -->
-                  <div class="box-footer">
-                    <center>
-                      <button type="submit" class="btn btn-success">Sign in</button>
-                    </center>
-                  </div>
-                  <!-- /.box-footer -->
-                </form>
-              </div>
-              <!-- /.box -->
-            </div>
-            <!-- /.col -->
-            <div class="col-md-8">
+        <div class="row">
+                <!-- /.col -->
               <div class="box">
                 <div class="row">
-                  <div class="col-md-5">
-                    <div class="lockscreen-wrapper"> 
+                  <div class="col-md-7">
+                    <div class=""> 
                       <div class="col-md-12">
                         <center>
-                          <h2>Gestión Inteligente<br>de la<br>Producción Lechera<br>a tu Alcance!</h2>
+                          <br>
+                          <h1>Gestión Inteligente<br>de la Producción Lechera<br>a tu Alcance!</h1>
                           algun otro mensaje (opcional)
                           <br><br>
                           <div>
@@ -73,7 +32,7 @@
                   </div>
 
                   <!-- /.col -->
-                  <div class="col-md-7">
+                  <div class="col-md-4">
                     <div class="box-body">
                       <div id="carousel-example-generic">
                         <div class="carousel-inner">
@@ -95,9 +54,9 @@
 
               </div>
               <!-- /.box -->
-            </div>
+       
             <!-- /.col -->
-          </div>
+            </div>
           <!-- /.row -->
           <!-- END SECCION 1-->
 
@@ -155,7 +114,7 @@
                       <div class="box-header with-border">
                         <h4 class="box-title">
                           <a data-toggle="collapse" data-parent="#accordion" href="#collapseThree">
-                            Mira el Proyecto
+                            Sobre el Proyecto
                           </a>
                         </h4>
                       </div>
