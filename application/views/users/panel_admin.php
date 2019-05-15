@@ -10,7 +10,7 @@
         | Your Page Content Here |
         -------------------------->
 
-<!-- NEW SECCION -->
+<!-- NEW SECCION 
           <div class="box box-success">
             <div class="box-header with-border">
               <h3 class="box-title">Detalles</h3>
@@ -19,7 +19,7 @@
               The great content goes here
             </div>
           </div>
-          <!-- /.box-body -->
+           /.box-body -->
 
           <h2>Resumen</h2>
 <!-- NEW SECCION -->
@@ -28,7 +28,7 @@
               <!-- DONUT CHART -->
               <div class="box box-success">
                 <div class="box-header with-border">
-                  <h3 class="box-title">Recuento total de Vacas</h3>
+                  <h3 class="box-title">Recuento total de vacas por estado</h3>
                 </div>
                 <div class="box-body chart-responsive">
                   <div class="chart" id="total_vacas" style="height: 220px; position: relative;"></div>
@@ -44,8 +44,8 @@
                 <!-- small box -->
                 <div class="small-box bg-aqua">
                   <div class="inner">
-                    <h3>150</h3>
-                    <h4>Vacas en Producción</h4>
+                    <h3><?php echo $ganaderos; ?></h3>
+                    <h4>Ganaderos</h4>
                   </div>
                   <div class="icon">
                     <i class="ion ion-stats-bars"></i>
@@ -58,8 +58,8 @@
                 <!-- small box -->
                 <div class="small-box bg-green">
                   <div class="inner">
-                    <h3>53</h3>
-                    <h4>Vacas en Seca</h4>
+                    <h3><?php echo $establos; ?></h3>
+                    <h4>Establos</h4>
                   </div>
                   <div class="icon">
                     <i class="ion ion-stats-bars"></i>
@@ -72,8 +72,8 @@
                 <!-- small box -->
                 <div class="small-box bg-yellow">
                   <div class="inner">
-                    <h3>44</h3>
-                    <h4>Vacas Paradas</h4>
+                    <h3><?php echo $ganados; ?></h3>
+                    <h4>Ganado</h4>
                   </div>
                   <div class="icon">
                     <i class="ion ion-stats-bars"></i>
@@ -86,8 +86,8 @@
                 <!-- small box -->
                 <div class="small-box bg-red">
                   <div class="inner">
-                    <h3>65</h3>
-                    <h4>Vacas Vacías</h4>
+                    <h3><?php echo $produccion; ?></h3>
+                    <h4>Litros de Leche</h4>
                   </div>
                   <div class="icon">
                     <i class="ion ion-stats-bars"></i>
@@ -103,7 +103,18 @@
           </div>
           <!-- /.row -->
 
+<!-- BAR CHART -->
+          <div class="box box-success">
+            <div class="box-header with-border">
+              <h3 class="box-title">Producción de leche de una vaca por mes</h3>
 
+            </div>
+            <div class="box-body chart-responsive">
+              <div class="chart" id="bar-chart" style="height: 300px;"></div>
+            </div>
+            <!-- /.box-body -->
+          </div>
+          <!-- /.box -->
 
         </section>  <!-- container-fluid -->
 

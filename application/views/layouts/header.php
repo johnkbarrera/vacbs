@@ -62,7 +62,8 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                 <li class="user-header">
                   <img src="<?php echo base_url()."public/"; ?>dist/img/user2-160x160.jpg" class="img-circle" alt="User Image">
                   <p>
-                     <?php echo $this->session->userdata("usuario")?>
+                     <?php echo $this->session->userdata("tag")?>
+                     <small><?php echo $this->session->userdata("email")?></small>
                     <small><?php echo $this->session->userdata("perfil")?></small>
                    </p>
                  </li>

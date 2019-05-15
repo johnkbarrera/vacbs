@@ -31,9 +31,9 @@ class Auth extends CI_Controller {
 		else{
 			# DATOS DE RES SON LAS COLUMNAS DE LA BD
 			$data = array(
-				'id' => $res->user_id,
-				'tag' => $res->nombre + $res->apellido,
-				'email' => $res->email,
+				'id' => $res->usuario_id,		
+				'tag' => $res->nombres." ".$res->apellidos,
+				'email' => $res->correo,
 				'usuario' => $res->usuario,
 				'perfil' => $res->perfil,
 				'login' => TRUE
