@@ -22,7 +22,7 @@ class Auth extends CI_Controller {
 		$usuario = $this->input->post("f_usuario");
 		$password = $this->input->post("f_contrasenna");
 
-		$res = $this->Usuario_model->login($usuario,$password); //encriptar pass
+		$res = $this->Usuario_model->login($usuario,sha1($password)); //encriptar pass
 
 		if (!$res){
 			$this->session->set_flashdata("error","El usuario y/o contraseña son incorrectos");

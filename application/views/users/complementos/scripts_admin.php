@@ -8,7 +8,7 @@
     var donut = new Morris.Donut({
       element: 'total_vacas',
       resize: true,
-      colors: ["#3c8dbc", "#f56954", "#00a65a", "#0ca65a"],
+      colors: ["#3c8dbc", "#f56954", "#00a65a", "#ffff00 "],
       data: [
         {label: "Download Sales", value: 12},
         {label: "In-Store Sales", value: 30},
@@ -37,8 +37,28 @@
       data: <?php echo $produccion;?>,
       barColors: ['#00a65a', '#f56954'],
       xkey: 'y',
-      ykeys: ['a', 'b'],
-      labels: ['Ganados','Litros Leche'],
+      ykeys: ['a'],
+      labels: ['Litros Leche'],
+      hideHover: 'auto'
+    });
+    //BAR CHART
+    var bar2 = new Morris.Bar({
+      element: 'bar-chart2',
+      resize: true,
+      data: [
+        {y: '2006', a: 100, b: 90},
+        {y: '2007', a: 75, b: 65},
+        {y: '2008', a: 50, b: 40},
+        {y: '2009', a: 75, b: 65},
+        {y: '2010', a: 50, b: 40},
+        {y: '2011', a: 75, b: 65},
+        {y: '2012', a: 100, b: 90}
+      ],
+      data: <?php echo $vacas;?>,
+      barColors: ['#f56954'],
+      xkey: 'y',
+      ykeys: ['a'],
+      labels: ['Litros Leche'],
       hideHover: 'auto'
     });
 

@@ -59,7 +59,7 @@
                 <div class="small-box bg-green">
                   <div class="inner">
                     <h3><?php echo $establos; ?></h3>
-                    <h4>Establos</h4>
+                    <h4>Establos por Ganadero (&mu;)</h4>
                   </div>
                   <div class="icon">
                     <i class="ion ion-stats-bars"></i>
@@ -73,7 +73,7 @@
                 <div class="small-box bg-yellow">
                   <div class="inner">
                     <h3><?php echo $ganados; ?></h3>
-                    <h4>Ganado</h4>
+                    <h4>Ganados por Establo (&mu;)</h4>
                   </div>
                   <div class="icon">
                     <i class="ion ion-stats-bars"></i>
@@ -87,7 +87,7 @@
                 <div class="small-box bg-red">
                   <div class="inner">
                     <h3><?php echo $produccion; ?></h3>
-                    <h4>Litros de Leche</h4>
+                    <h4>Promedio de Producción (&mu;)</h4>
                   </div>
                   <div class="icon">
                     <i class="ion ion-stats-bars"></i>
@@ -103,10 +103,23 @@
           </div>
           <!-- /.row -->
 
-<!-- BAR CHART -->
+          <!-- BAR CHART -->
           <div class="box box-success">
             <div class="box-header with-border">
-              <h3 class="box-title">Producción de leche de una vaca por mes</h3>
+              <h3 class="box-title">Número de Vacunos en  Producción</h3>
+
+            </div>
+            <div class="box-body chart-responsive">
+              <div class="chart" id="bar-chart2" style="height: 300px;"></div>
+            </div>
+            <!-- /.box-body -->
+          </div>
+          <!-- /.box -->
+
+          <!-- BAR CHART -->
+          <div class="box box-success">
+            <div class="box-header with-border">
+              <h3 class="box-title">Producción lechera promedio</h3>
 
             </div>
             <div class="box-body chart-responsive">
@@ -115,6 +128,8 @@
             <!-- /.box-body -->
           </div>
           <!-- /.box -->
+
+         
 
         </section>  <!-- container-fluid -->
 

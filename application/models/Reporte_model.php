@@ -4,7 +4,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 class Reporte_model extends CI_Model {
 
 	#-------------------------------------------------------------------------------#
-	# ADMIN
+	# SUPERVISOR
 
 	public function getRecuento(){
 
@@ -19,52 +19,85 @@ class Reporte_model extends CI_Model {
 	    while ($line = pg_fetch_array($result, null, PGSQL_ASSOC)) {
 	    	$data['ganaderos'] = $line['total'];
 	    }
-	    $result = pg_query("SELECT COUNT(*) as total FROM establo");
+	    $result = pg_query("SELECT to_char(AVG(establos.count),'FM999999999.00') AS media
+							FROM (SELECT COUNT(*), 1 AS establos_id
+								  FROM establo
+								  GROUP BY ganadero_id) as establos
+							GROUP BY establos.establos_id;
+							");
 	    while ($line = pg_fetch_array($result, null, PGSQL_ASSOC)) {
-	    	$data['establos'] = $line['total'];
+	    	$data['establos'] = $line['media'];
 	    }
-	    $result = pg_query("SELECT COUNT(*) as total FROM ganado");
+	    $result = pg_query("SELECT to_char(AVG(establos.vacas),'FM999999999.00') AS media
+							FROM (SELECT establo_id, COUNT(*) as vacas, 1 as establos_id
+								  FROM ganado
+								  GROUP BY establo_id) AS establos
+							GROUP BY establos.establos_id;
+							");
 	    while ($line = pg_fetch_array($result, null, PGSQL_ASSOC)) {
-	    	$data['ganados'] = $line['total'];
+	    	$data['ganados'] = $line['media'];
 	    }
-	    $result = pg_query("SELECT COALESCE(SUM(litros_leche),0) as litros_totales FROM ordenios");
+	    $result = pg_query("SELECT to_char(AVG(medias.produccion_media),'FM999999999.00') AS media
+							FROM (SELECT ganado_id, SUM(litros_leche)/COUNT(litros_leche) AS produccion_media
+							      FROM produccion
+								  GROUP BY ganado_id) AS medias;
+							");
 	    while ($line = pg_fetch_array($result, null, PGSQL_ASSOC)) {
-	    	$data['produccion'] = $line['litros_totales'];
+	    	$data['produccion'] = $line['media'];
 	    }
 
 	    return $data;
 	}
 
 	public function getEstado(){
-		$sentencia = "SELECT estado_actual, count(*) as cantidad
-					  FROM ganado
-					  GROUP BY estado_actual;";
+		$sentencia = "SELECT estado_vaca, count(*) as cantidad
+					  FROM reproduccion
+					  GROUP BY estado_vaca;
+					 ";
 	    $result = pg_query($sentencia);
 	    $data = array();
 	    while ($line = pg_fetch_array($result, null, PGSQL_ASSOC)) {
 	    	//echo $line['vaca_id'];
 	    	$data[] = array(
-	    		'label' => $line['estado_actual'],
+	    		'label' => $line['estado_vaca'],
 	    		'value' => $line['cantidad']
 	    	);  	
 	    }
 	    return $data;
 	}
 
-	public function getPruduccionMes(){
-		$sentencia = "SELECT date_trunc('month', fecha) AS fecha,
-	  						 SUM(litros_leche) AS litros_leche,
-	   						 COUNT(*) AS ganados
-					  FROM ordenios
-					  GROUP BY date_trunc('month', fecha);";
+	public function getPruduccionPromedio(){
+		$sentencia = "SELECT to_char(fecha,'yyyy-mm-dd') AS fecha, to_char(AVG(litros_leche),'FM999999999.00') AS litros_leche
+					  FROM produccion
+					  GROUP BY fecha
+					  ORDER BY fecha;
+					  ";
 	    $result = pg_query($sentencia);
 	    $data = array();
 	    while ($line = pg_fetch_array($result, null, PGSQL_ASSOC)) {
 	    	//echo $line['vaca_id'];
 	    	$data[] = array(
 	    		'y' => $line['fecha'],
-	    		'a' => $line['ganados'],
-	    		'b' => $line['litros_leche']
+	    		//'a' => $line['ganados'],
+	    		'a' => $line['litros_leche']
+	    	);  	
+	    }
+	    return $data;
+	}
+
+	public function getGanado_en_Pruduccion(){
+		$sentencia = "SELECT to_char(fecha,'yyyy-mm-dd') AS fecha, COUNT(*) AS ganados
+					  FROM produccion
+					  GROUP BY fecha
+					  ORDER BY fecha;
+					  ";
+	    $result = pg_query($sentencia);
+	    $data = array();
+	    while ($line = pg_fetch_array($result, null, PGSQL_ASSOC)) {
+	    	//echo $line['vaca_id'];
+	    	$data[] = array(
+	    		'y' => $line['fecha'],
+	    		'a' => $line['ganados']
 	    	);  	
 	    }
 	    return $data;
@@ -87,7 +120,7 @@ class Reporte_model extends CI_Model {
 	}
 
 	#-------------------------------------------------------------------------------#
-	# PRODUCTOR
+	# GANADERO
 	public function getVacas(){
 		//$this->db->where("")
 		$resultados = $this->db->get("ganado"); // tabla
@@ -149,4 +182,6 @@ class Reporte_model extends CI_Model {
 	}
 
 
+	#-------------------------------------------------------------------------------#
+	# ADMINISTRADOR
 }

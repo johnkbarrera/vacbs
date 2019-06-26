@@ -14,7 +14,7 @@ class Dashboard extends CI_Controller {
 		if ($this->session->userdata("login")){
 
 			#PARA EL PRODUCTOR
-			if ($this->session->userdata("perfil") == 'productor'){
+			if ($this->session->userdata("perfil") == 'GANADERO'){
 
 				# Donut
 				$data_donut = $this->Reporte_model->getDonut($this->session->userdata("usuario"));
@@ -40,8 +40,8 @@ class Dashboard extends CI_Controller {
 				$this->load->view('users/scripts_productor',$data);
 			}
 
-			#PARA EL ADMIN
-			if ($this->session->userdata("perfil") == 'administrador'){
+			#PARA EL SUPERVISOR
+			if ($this->session->userdata("perfil") == 'SUPERVISOR'){
 
 				# DATOS
 				$data_recuento = $this->Reporte_model->getRecuento();
@@ -55,19 +55,28 @@ class Dashboard extends CI_Controller {
 				}
 				$data_estado_reporte = json_encode($data_estado);
 
-				$data_producion_mensual = $this->Reporte_model->getPruduccionMes();
-				if(empty($data_producion_mensual)){
-					$data_producion_mensual[] = array(
+				$data_vacas_temp = $this->Reporte_model->getGanado_en_Pruduccion();
+				if(empty($data_vacas_temp)){
+					$data_vacas_temp[] = array(
 			    		'y' => 'Mes no registrado',
-			    		'a' => 2,
-			    		'b' => 40
+			    		'a' => 2
 			    	);  	
 				}
-				$data_producion_reporte = json_encode($data_producion_mensual);
+				$data_vacas_temporal = json_encode($data_vacas_temp);
+
+				$data_producion_temp = $this->Reporte_model->getPruduccionPromedio();
+				if(empty($data_producion_temp)){
+					$data_producion_temp[] = array(
+			    		'y' => 'Mes no registrado',
+			    		'a' => 2
+			    	);  	
+				}
+				$data_producion_temporal = json_encode($data_producion_temp);
 
 				$data = array(
 					'estado' => $data_estado_reporte,
-					'produccion' => $data_producion_reporte
+					'produccion' => $data_producion_temporal,
+					'vacas' => $data_vacas_temporal
 				);
 				
 				$this->load->view('layouts/header');

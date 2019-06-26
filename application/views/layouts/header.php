@@ -5,7 +5,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 <head>
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <title>DVT title</title>
+  <title>VacBS</title>
   <!-- Tell the browser to be responsive to screen width -->
   <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
   <!-- Bootstrap 3.3.7 -->
@@ -107,13 +107,13 @@ defined('BASEPATH') OR exit('No direct script access allowed');
       <div class="collapse navbar-collapse" id="navbar-collapse">
         <ul class="nav navbar-nav navbar-right">
           <li><a href="#">Página principal</a></li>
-          <li><a href="#">Proyecto</a></li>
+          <!--<li><a href="#">Proyecto</a></li>-->
           <li class="dropdown">
             <a href="#" class="dropdown-toggle" data-toggle="dropdown">Mas Información <span class="caret"></span></a>
             <ul class="dropdown-menu" role="menu">
-              <li><a href="#">Action</a></li>
-              <li><a href="#">Another action</a></li>
-              <li><a href="#">Something else here</a></li>
+              <li><a href="#">Proyecto</a></li>
+              <li><a href="#">Artículos</a></li>
+              <li><a href="#">Colaboradores</a></li>
               <li class="divider"></li>
               <li><a href="#">Separated link</a></li>
             </ul>
