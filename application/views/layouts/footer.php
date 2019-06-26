@@ -1,15 +1,54 @@
 
-  <!-- /.content-wrapper -->
-  <footer class="main-footer">
-    <div class="container">
-      <div class="pull-right hidden-xs">
-        <b>Version</b> 2.4.0
+
+  <footer class="content container py-5">
+    <div class="row">
+
+      <div class="col-md-4">
+        <i class="fal fa-facebook" style="font-size:48px;color:#ffffff;""></i>
+        <small class="d-block mb-3 text-muted">&copy; 2019-VavBs</small>
       </div>
-      <strong>Copyright &copy; 2014-2016 <a href="https://adminlte.io">Almsaeed Studio</a>.</strong> All rights
-      reserved.
+      <div class="col-md-2">
+        <h3 style="color: #ffffff">Caracteristicas</h3>
+        <ul class="list-unstyled text-small">
+          <li><a class="text-muted" href="#">Ganadería Sostenible</a></li>
+          <li><a class="text-muted" href="#">Aplicación Web</a></li>
+          <li><a class="text-muted" href="#">Aplicación Móvil</a></li>
+          <li><a class="text-muted" href="#">Módulo de Analisis de Imágenes</a></li>
+          <li><a class="text-muted" href="#">Inteligencia Artificial</a></li>
+          <li><a class="text-muted" href="#">Redes Neuronales</a></li>
+        </ul>
+      </div>
+      <div class="col-md-2">
+        <h3 style="color: #ffffff">Instituciones</h3>
+        <ul class="list-unstyled text-small">
+          <li><a class="text-muted" href="#">INIA</a></li>
+          <li><a class="text-muted" href="#">UP</a></li>
+          <li><a class="text-muted" href="#">UNALM</a></li>
+        </ul>
+      </div>
+      <div class="col-md-2">
+        <h3 style="color: #ffffff">Recursos</h3>
+        <ul class="list-unstyled text-small">
+          <li><a class="text-muted" href="#">Negocios</a></li>
+          <li><a class="text-muted" href="#">Educación</a></li>
+          <li><a class="text-muted" href="#">Gobierno</a></li>
+          <li><a class="text-muted" href="#">Gestión</a></li>
+        </ul>
+      </div>
+      <div class="col-md-2">
+        <h3 style="color: #ffffff">Nosotros</h3>
+        <ul class="list-unstyled text-small">
+          <li><a class="text-muted" href="#">Equipo</a></li>
+          <li><a class="text-muted" href="#">Localizacion</a></li>
+          <li><a class="text-muted" href="#">Privacidad</a></li>
+          <li><a class="text-muted" href="#">Terminos</a></li>
+        </ul>
+      </div>
     </div>
-    <!-- /.container -->
   </footer>
+
+
+
 </div>
 <!-- ./wrapper -->
 

@@ -35,7 +35,7 @@ class Dashboard extends CI_Controller {
 				);
 
 				$this->load->view('layouts/header');
-				$this->load->view('users/panel_productor');
+				$this->load->view('users/panel_ganadero');
 				$this->load->view('layouts/footer');
 				$this->load->view('users/scripts_productor',$data);
 			}
@@ -80,7 +80,7 @@ class Dashboard extends CI_Controller {
 				);
 				
 				$this->load->view('layouts/header');
-				$this->load->view('users/panel_admin',$data_recuento);
+				$this->load->view('users/panel_supervisor',$data_recuento);
 				$this->load->view('layouts/footer');
 				$this->load->view('users/complementos/scripts_admin',$data);
 			}
