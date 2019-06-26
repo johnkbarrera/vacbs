@@ -50,9 +50,12 @@ class Reporte_model extends CI_Model {
 	}
 
 	public function getEstado(){
-		$sentencia = "SELECT estado_vaca, count(*) as cantidad
-					  FROM reproduccion
-					  GROUP BY estado_vaca;
+		$sentencia = "SELECT estado_vaca, COUNT(estado_vaca) AS cantidad
+					  FROM (SELECT DISTINCT ON (ganado_id)
+					       		   reproduccion_id, estado_vaca, ganado_id
+						    FROM   reproduccion
+					        ORDER BY ganado_id, estado_vaca DESC, ganado_id) AS tabla1
+					  GROUP BY tabla1.estado_vaca;
 					 ";
 	    $result = pg_query($sentencia);
 	    $data = array();

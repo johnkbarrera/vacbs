@@ -45,7 +45,7 @@
                 <div class="small-box bg-aqua">
                   <div class="inner">
                     <h3>150</h3>
-                    <h4>Vacas en Producción</h4>
+                    <h4>Número de Establos</h4>
                   </div>
                   <div class="icon">
                     <i class="ion ion-stats-bars"></i>
@@ -59,7 +59,7 @@
                 <div class="small-box bg-green">
                   <div class="inner">
                     <h3>53</h3>
-                    <h4>Vacas en Seca</h4>
+                    <h4>Ganados por Establo (&mu;)</h4>
                   </div>
                   <div class="icon">
                     <i class="ion ion-stats-bars"></i>
@@ -73,7 +73,7 @@
                 <div class="small-box bg-yellow">
                   <div class="inner">
                     <h3>44</h3>
-                    <h4>Vacas Paradas</h4>
+                    <h4>Producción por Establo (&mu;)</h4>
                   </div>
                   <div class="icon">
                     <i class="ion ion-stats-bars"></i>
@@ -87,7 +87,7 @@
                 <div class="small-box bg-red">
                   <div class="inner">
                     <h3>65</h3>
-                    <h4>Vacas Vacías</h4>
+                    <h4>Producción por Ganado (&mu;)</h4>
                   </div>
                   <div class="icon">
                     <i class="ion ion-stats-bars"></i>

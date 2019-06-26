@@ -24,7 +24,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 |
 */
 $config['base_url'] = 'http://localhost/vacbs/';
-//$config['base_url'] = 'http://192.168.1.9/vacbs/';
+$config['base_url'] = 'http://172.22.3.169/vacbs/';
 
 /*
 |--------------------------------------------------------------------------
