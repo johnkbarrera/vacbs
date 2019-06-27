@@ -2,4 +2,4 @@ RewriteEngine On
 RewriteBase /projFolder
 RewriteCond %{REQUEST_FILENAME} !-f
 RewriteCond %{REQUEST_FILENAME} !-d
-RewriteRule ^(.*)$ /projFolder/index.php/$1 [L]
+RewriteRule ^(.*)$ /vacbs/index.php/$1 [L]
