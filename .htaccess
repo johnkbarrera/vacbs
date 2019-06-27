@@ -1,5 +1,5 @@
-RewriteEngine On
-RewriteBase /vacbs
+RewriteEngine on
+RewriteCond $1 !^(index\.php|public|\.txt)
 RewriteCond %{REQUEST_FILENAME} !-f
 RewriteCond %{REQUEST_FILENAME} !-d
-RewriteRule ^(.*)$ /vacbs/index.php/$1 [L]
+RewriteRule ^(.*)$ index.php?$1
