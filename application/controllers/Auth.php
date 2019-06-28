@@ -5,13 +5,21 @@ class Auth extends CI_Controller {
 
 	public function __construct(){
 		parent::__construct();
-		$this->load->model("Usuario_model");
+		$this->load->model("Usuario_auth_model");
 	}
 
 	public function index()
 	{
 		if ($this->session->userdata("login")){
-			redirect(base_url()."dashboard");
+			if ($this->session->userdata("perfil") == 'ADMINISTRADOR') {	
+				redirect(base_url()."administrador/dashboard");
+			}
+			if ($this->session->userdata("perfil") == 'SUPERVISOR'){
+				redirect(base_url()."supervisor/dashboard");
+			} 
+			if ($this->session->userdata("perfil") == 'GANADERO'){
+				redirect(base_url()."ganadero/dashboard");
+			}
 		}
 		else{
 			$this->load->view('login');
@@ -22,7 +30,7 @@ class Auth extends CI_Controller {
 		$usuario = $this->input->post("f_usuario");
 		$password = $this->input->post("f_contrasenna");
 
-		$res = $this->Usuario_model->login($usuario,sha1($password)); //encriptar pass
+		$res = $this->Usuario_auth_model->login($usuario,sha1($password)); //encriptar pass
 
 		if (!$res){
 			$this->session->set_flashdata("error","El usuario y/o contraseña son incorrectos");
@@ -39,7 +47,10 @@ class Auth extends CI_Controller {
 				'login' => TRUE
 			);
 			$this->session->set_userdata($data);
-			redirect(base_url()."dashboard");
+
+			$this->index();
+
+
 		}
 	}
 

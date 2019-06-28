@@ -5,7 +5,7 @@
 
       <div class="col-md-4">
         <i class="fal fa-facebook" style="font-size:48px;color:#ffffff;""></i>
-        <small class="d-block mb-3 text-muted">&copy; 2019-VavBs</small>
+        <small class="d-block mb-3 text-muted">&copy; 2019-VacBs</small>
       </div>
       <div class="col-md-2">
         <h3 style="color: #ffffff">Caracteristicas</h3>

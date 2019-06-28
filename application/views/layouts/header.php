@@ -119,7 +119,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
             </ul>
           </li>
           <?php if ($this->session->userdata("login")) { ?>
-            <li><a href="<?php echo base_url()."dashboard/"; ?>">Dashboard</a></li>
+            <li><a href="<?php echo base_url()."auth/"; ?>">Dashboard</a></li>
           <?php }; ?>
 
         </ul>
