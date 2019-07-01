@@ -4,21 +4,55 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 class Reporte_model extends CI_Model {
 
 
+	public function getIndicadores($usuario){
+		$data = array(
+					'establos' => 0,
+					'ganado_x_establo' => 0,
+					'produccion_x_establo' => 0,
+					'producion_x_ganado' => 0,
+				);
 
-	public function getVacas(){
-		//$this->db->where("")
-		$resultados = $this->db->get("ganado"); // tabla
-		return $resultados->result();
+		$result = pg_query("SELECT count(*) AS total FROM establo AS e
+							JOIN ganadero AS u ON e.ganadero_id = u.ganadero_id 
+							WHERE u.usuario = '".$usuario."';	
+						   ");
+	    while ($line = pg_fetch_array($result, null, PGSQL_ASSOC)) {
+	    	$data['establos'] = $line['total'];
+	    }
+
+
+		$result = pg_query("SELECT to_char(AVG(resumen.count),'FM999999999.00') AS media
+							FROM (SELECT COUNT(*) , 1 AS resumen_id
+								  FROM ganado AS gd
+								  JOIN establo AS e ON e.establo_id = gd.establo_id 
+								  JOIN ganadero AS u ON e.ganadero_id = u.ganadero_id 
+								  WHERE u.usuario = '".$usuario."'	
+								  AND gd.estado_saca = false
+								  GROUP BY e.establo_id) AS resumen
+							GROUP BY resumen.resumen_id;
+						   ");
+	    while ($line = pg_fetch_array($result, null, PGSQL_ASSOC)) {
+	    	$data['ganado_x_establo'] = $line['media'];
+	    }
+
+
+
+		return $data;
 	}
 
-	public function getDonut($usuario){
-		# $sentencia = "select * from ganado where user_id = 1;";
-		$sentencia = "SELECT ganado.nombre,
-	   						 ganado.pesodob
-					  FROM ganado 
-					  INNER JOIN establo ON establo.establo_id = ganado.establo_id 
-					  INNER JOIN ganadero ON ganadero.ganadero_id = establo.ganadero_id
-					  WHERE ganadero.usuario = '".$usuario."'";
+
+	public function getDonut($ganadero_id){
+
+		$sentencia = "SELECT estado_vaca, COUNT(estado_vaca) AS cantidad
+					  FROM (SELECT DISTINCT ON (ganado.ganado_id)
+	                               reproduccion.reproduccion_id, reproduccion.estado_vaca,ganado.ganado_id, establo.ganadero_id
+							FROM reproduccion 
+							JOIN ganado ON reproduccion.ganado_id = ganado.ganado_id
+							JOIN establo ON ganado.establo_id = establo.establo_id
+							WHERE establo.ganadero_id = ".$ganadero_id."
+							ORDER BY ganado_id, estado_vaca DESC, ganado_id) AS tabla1
+					  GROUP BY tabla1.estado_vaca;
+					  ";
 
 	    $result = pg_query($sentencia);
 
@@ -26,16 +60,14 @@ class Reporte_model extends CI_Model {
 	    while ($line = pg_fetch_array($result, null, PGSQL_ASSOC)) {
 	    	//echo $line['vaca_id'];
 	    	$data[] = array(
-	    		'label' => $line['nombre'],
-	    		'value' => $line['pesodob']
-	    	);  	
-	    	/*foreach ($line as $col_value) {
-	    		echo $col_value;
-	    		echo "    ";
-    		}*/
+	    		'label' => $line['estado_vaca'],
+	    		'value' => $line['cantidad']
+	    	);  
 	    }
 	    return $data;
 	}
+
+
 
 	public function getBar(){
 		# $sentencia = "select * from ganado where user_id = 1;";
@@ -63,6 +95,26 @@ class Reporte_model extends CI_Model {
 	    	);  
 	    }
 	    return $data;
+	}
+
+	public function getEstablosLista($usuario){	
+
+		$sentencia = "SELECT * FROM establo AS e
+					  JOIN ganadero AS gd ON e.ganadero_id = gd.ganadero_id
+					  WHERE gd.usuario =  '".$usuario."';
+				      ";
+
+	    $result = pg_query($sentencia);
+	    $data = array();
+	    while ($line = pg_fetch_array($result, null, PGSQL_ASSOC)) {
+	    	$data[] = array(
+	    		'establo_id' => $line['establo_id'],
+	    		'nombre' => $line['nombre']
+	    	);  
+	    }
+	    return $data;
+
+
 	}
 
 }

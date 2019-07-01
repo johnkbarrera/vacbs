@@ -13,8 +13,22 @@ class Dashboard extends CI_Controller {
 
 		if ($this->session->userdata("login") and $this->session->userdata("perfil") == 'GANADERO'){
 
-				# Donut
-				$data_donut = $this->Reporte_model->getDonut($this->session->userdata("usuario"));
+
+
+			// INDICADORES
+			$data_indicadores = $this->Reporte_model->getIndicadores($this->session->userdata("usuario"));
+
+
+			$data_establos = $this->Reporte_model->getEstablosLista($this->session->userdata("usuario"));     // nombre array para vista
+
+
+			$data_corpus = array(
+				'lista_indicadores' => $data_indicadores,     // nombre array para vista
+				'lista_establos' => $data_establos //$data_encode_bar
+			);
+
+			# Donut
+			$data_donut = $this->Reporte_model->getDonut($this->session->userdata("id"));
 				//$data_bar = $this->Reporte_model->getBar();
 		
 				/*foreach ($DonutM as $row) {
@@ -23,18 +37,18 @@ class Dashboard extends CI_Controller {
 						'registro' => $row->registro
 					);
 				}; */
-				$data_encode_donut = json_encode($data_donut);	
+			$data_encode_donut = json_encode($data_donut);	
 				//$data_encode_bar = json_encode($data_bar);
 				//echo $data_encode;
-				$data = array(
-					'donut' => $data_encode_donut,     // nombre array para vista
-					'bar' => $data_encode_donut //$data_encode_bar
-				);
+			$data = array(
+				'donut' => $data_encode_donut,     // nombre array para vista
+				'bar' => $data_encode_donut //$data_encode_bar
+			);
 
-				$this->load->view('layouts/header');
-				$this->load->view('users/ganadero/panel_ganadero');
-				$this->load->view('layouts/footer');
-				$this->load->view('users/ganadero/scripts_ganadero',$data);
+			$this->load->view('layouts/header');
+			$this->load->view('users/ganadero/panel_ganadero',$data_corpus);
+			$this->load->view('layouts/footer');
+			$this->load->view('users/ganadero/scripts_ganadero',$data);
 
 
 		}
