@@ -1,6 +1,6 @@
 <!-- Content Wrapper. Contains page content -->
 
-  <div class="content-wrapper" style="background-color:#ffaaff">
+  <div class="content-wrapper" style="background-color:#C4DC9A">
       <!-- Main content -->
       <section class="content container">
 
@@ -111,12 +111,11 @@
               <?php foreach ($lista_establos as $establo): ?>
                 <div class="col-md-3 col-sm-6 col-xs-12">
                   <div class="info-box">
-                    <span class="info-box-icon bg-ligth-brown"><i class="ion ion-ios-gear-outline"></i></span>
+                    <span class="info-box-icon bg-ligth-brown"><i class="fa fa-home"></i></span>
                     <div class="info-box-content">
                       <span class="info-box-text"> <?php echo $establo['establo_id']; ?></span>
-                      <span class="info-box-text"> <?php echo $establo['nombre']; ?></span>
+                      <span class="info-box-number"><?php echo $establo['nombre']; ?></span>
                       <a href="#" class="small-box-footer">Ver detalles <i class="fa fa-arrow-circle-right"></i></a>
-                      <span class="info-box-number">90<small>%</small></span>
                     </div>
                   <!-- /.info-box-content -->
                   </div>
@@ -127,20 +126,7 @@
           </div>
 
 
-          <!-- BAR CHART -->
-          <div class="box box-success">
-            <div class="box-header with-border">
-              <h3 class="box-title">Bar Chart</h3>
-
-            </div>
-            <div class="box-body chart-responsive">
-              <div class="chart" id="bar-chart" style="height: 300px;"></div>
-            </div>
-            <!-- /.box-body -->
-          </div>
-          <!-- /.box -->
-
-                    <!-- BAR CHART -->
+<!-- 
           <div class="box box-success">
             <div class="box-header with-border">
               <h3 class="box-title">Bar Chart</h3>
@@ -152,11 +138,74 @@
               </div>
             </div>
             <div class="box-body chart-responsive">
-              <div class="chart" id="bar-chart2" style="height: 300px;"></div>
+              <div class="chart" id="bar-chart" style="height: 300px;"></div>
+            </div>
+
+          </div>
+          -->
+
+
+          <div class="box">
+            <div class="box-header">
+              <h3 class="box-title">Total de Cabezas de Ganado</h3>
+            </div>
+            <!-- /.box-header -->
+            <div class="box-body">
+              <table id="tabla_de_ganado" class="table table-bordered table-striped">
+                <thead>
+                <tr>
+                    <th>Establo</th>
+                    <th>Nombre</th>
+                    <th>Registro/COD</th>
+                    <th>Raza</th>
+                    <th>procedencia</th>
+                    <th>Nacimiento</th>
+                    <th>Peso</th>
+                    <th>Mas Información</th>
+                </tr>
+              </thead>
+
+                <tbody>
+                  <?php if(!empty($lista_ganado)): ?>
+                  <?php foreach ($lista_ganado as $g): ?>   
+                       <tr>
+                         <td> <?php echo $g['e_nombre']; ?> </td>
+                         <td> <?php echo $g['nombre']; ?> </td>
+                         <td> <?php echo $g['registro']." / Cod-".$g['ganado_id']; ?> </td>
+                         <td> <?php echo $g['raza']; ?> </td>
+                         <td> <?php echo $g['procedencia']; ?> </td>
+                         <td> <?php echo $g['dob']; ?> </td>
+                         <td> <?php echo $g['pesodob']; ?> </td>
+                         <th>
+                            <div class="">
+                            <center>
+                                <a href="#" class="btn btn-xs btn-success"><span class="fa fa-eye"> </span></a>   
+                                <a href="#" class="btn btn-xs btn-warning"><span class="fa fa-pencil"> </span></a>                          
+                              </center>
+                          </div>
+                         </th>
+                       </tr>
+                <?php endforeach; ?>
+                <?php endif; ?>
+              </tbody>
+
+
+                <tfoot>
+                <tr>
+                    <th>Establo</th>
+                    <th>Nombre</th>
+                    <th>Registro/COD</th>
+                    <th>Raza</th>
+                    <th>procedencia</th>
+                    <th>Nacimiento</th>
+                    <th>Peso</th>
+                    <th>Mas Información</th>
+                </tr>
+                </tfoot>
+              </table>
             </div>
             <!-- /.box-body -->
           </div>
-          <!-- /.box -->
 
 
 

@@ -22,10 +22,15 @@ class Dashboard extends CI_Controller {
 			$data_establos = $this->Reporte_model->getEstablosLista($this->session->userdata("usuario"));     // nombre array para vista
 
 
+			$data_ganado = $this->Reporte_model->getGanadoLista($this->session->userdata("usuario"));    // nombre array para vista
+
+
 			$data_corpus = array(
 				'lista_indicadores' => $data_indicadores,     // nombre array para vista
-				'lista_establos' => $data_establos //$data_encode_bar
+				'lista_establos' => $data_establos,
+				'lista_ganado' => $data_ganado
 			);
+
 
 			# Donut
 			$data_donut = $this->Reporte_model->getDonut($this->session->userdata("id"));

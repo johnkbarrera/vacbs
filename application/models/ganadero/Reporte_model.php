@@ -113,8 +113,45 @@ class Reporte_model extends CI_Model {
 	    	);  
 	    }
 	    return $data;
+	}
+
+
+
+	public function getGanadoLista($usuario){	
+
+		$sentencia = "SELECT g.ganado_id, g.nombre, g.registro, g.raza, g.procedencia, g.dob, g.pesodob, e.establo_id, e.nombre as nombre_e
+					  FROM ganado  AS g
+					  INNER JOIN establo AS e ON g.establo_id = e.establo_id
+					  JOIN ganadero AS gd ON e.ganadero_id = gd.ganadero_id
+					  WHERE gd.usuario =  '".$usuario."'
+					  AND g.estado_saca = False;
+				      ";
+
+	    $result = pg_query($sentencia);
+	    $data = array();
+	    while ($line = pg_fetch_array($result, null, PGSQL_ASSOC)) {
+	    	$data[] = array(
+	    		'ganado_id' => $line['ganado_id'],
+	    		'nombre' => $line['nombre'],
+	    		'registro' => $line['registro'],
+	    		'raza' => $line['raza'],
+	    		'procedencia' => $line['procedencia'],
+	    		'dob' => $line['dob'],
+	    		'pesodob' => $line['pesodob'],
+	    		'establo_id' => $line['establo_id'],
+	    		'e_nombre' => $line['nombre_e']
+	    	);  
+	    }
+	    return $data;
 
 
 	}
 
 }
+
+
+/*
+
+SELECT g.ganado_id, g.nombre, g.registro, g.raza, g.procedencia, g.dob, g.pesodob, e.establo_id, e.nombre FROM ganado AS g INNER JOIN establo AS e ON g.establo_id = e.establo_id JOIN ganadero AS gd ON e.ganadero_id = gd.ganadero_id WHERE gd.usuario = 'jkn@gmail.com' AND g.estado_saca = False;
+
+*/

@@ -1,6 +1,6 @@
 <!-- Content Wrapper. Contains page content -->
 
-  <div class="content-wrapper" style="background-color:#ffffff">
+  <div class="content-wrapper" style="background-color:#C4DC9A">
       <!-- Main content -->
       <section class="content container">
 
