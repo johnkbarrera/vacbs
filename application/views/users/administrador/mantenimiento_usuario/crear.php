@@ -22,26 +22,35 @@
 	        </div>
 	        <!-- /.box-header -->
 	        <div class="box-body">
-	          <div class="row">
+
+	         <?php if($this->session->flashdata("error")):?>
+			    	<div class="alert alert-danger">
+			    		<p> <?php echo $this->session->flashdata("error")?> </p>
+			    	</div>
+			 <?php endif; ?>
+
+	        <form action="<?php echo base_url();?>administrador/usuario/crear_action" method="POST">
+	          <div class="form-group row">
+
 	            <div class="col-md-6">
 	            
 	              <div class="form-group has-feedback">
 	              	<label>Nombres</label>
-	                <input type="text" class="form-control" placeholder="">
+	                <input id="nombres" name="nombres" type="text" class="form-control" placeholder="">
 			        <span class="glyphicon glyphicon-user form-control-feedback"></span>
 	              </div>
 	              <!-- /.form-group -->
 	            
 	              <div class="form-group has-feedback">
 	              	<label>Apellidos</label>
-	                <input type="text" class="form-control" placeholder="">
+	                <input id="apellidos" name="apellidos" type="text" class="form-control" placeholder="">
 			        <span class="glyphicon glyphicon-user form-control-feedback"></span>
 	              </div>
 	              <!-- /.form-group -->
 	            
 	              <div class="form-group has-feedback">
 	              	<label>Email/Usuario</label>
-	                <input type="email" class="form-control" placeholder="">
+	                <input id="correo" name="correo" type="email" class="form-control" placeholder="">
 			        <span class="glyphicon glyphicon-envelope form-control-feedback"></span>
 	              </div>
 	              <!-- /.form-group -->
@@ -51,40 +60,42 @@
 	            
 	              <div class="form-group has-feedback">
 	              	<label>Contraseña</label>
-	                <input type="password" class="form-control" placeholder="******">
+	                <input id="contrasenia" name="contrasenia" type="password" class="form-control" placeholder="******">
         			<span class="glyphicon glyphicon-lock form-control-feedback"></span>
 	              </div>
 	              <!-- /.form-group -->
 	            
 	              <div class="form-group has-feedback">
 	              	<label>Repetir contraseña</label>
-			        <input type="password" class="form-control" placeholder="******">
+			        <input id="contrasenia2" name="contrasenia2" type="password" class="form-control" placeholder="******">
 			        <span class="glyphicon glyphicon-log-in form-control-feedback"></span>
 	              </div>
 	              <!-- /.form-group -->
 
 	              <div class="form-group">
 	                <label>Perfil</label>
-	                <select class="form-control select2" style="width: 100%;">
-	                  <option selected="selected">SUPERVISOR</option>
-	                  <option>ADMINISTRADOR</option>
+	                <select id="perfil" name="perfil" class="form-control" style="width: 100%;">
+	                  <option value="SUPERVISOR" selected="selected">SUPERVISOR</option>
+	                  <option value="ADMINISTRADOR">ADMINISTRADOR</option>
 	                </select>
 	              </div>
 	              <!-- /.form-group -->
 	            </div>
 	            <!-- /.col -->
 	          </div>
+
+	          <div class="form-group">
+	          	<center>
+		          	<button type="submit" class="btn btn-primary btn-flat btn-success">Guardar Usuario  		
+		          	</button>	  	
+	          	</center>
+	          </div>
+	         </form>
 	          <!-- /.row -->
 	        </div>
 	        <!-- /.box-body -->
 	        <div class="box-footer">
 	         
-	            <div class="container">            	
-	            	<div class="col-md-12" align="center">
-	            		<a href="<?php echo base_url();?>administrador/usuario/crear" class="btn btn-primary btn-flat btn-success"><span class="fa fa-plus"></span> Guardar Usuario</a>
-	            	</div>
-	            </div>
-
 	            <br>
 	        </div>
 	      </div>
