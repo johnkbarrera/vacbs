@@ -50,7 +50,7 @@
                   <div class="icon">
                     <i class="ion ion-stats-bars"></i>
                   </div>
-                  <a href="#" class="small-box-footer">Ver detalles <i class="fa fa-arrow-circle-right"></i></a>
+                  <a href="#" class="small-box-footer">Promedio <i class="fa fa-arrow-circle-right"></i></a>
                 </div>
               </div>
               <!-- ./col -->
@@ -59,43 +59,41 @@
                 <div class="small-box bg-green">
                   <div class="inner">
                     <h3><?php echo $lista_indicadores['ganado_x_establo']; ?></h3>
-                    <h4>Ganados por Establo (&mu;)</h4>
+                    <h4>Ganados por Establo </h4>
                   </div>
                   <div class="icon">
                     <i class="ion ion-stats-bars"></i>
                   </div>
-                  <a href="#" class="small-box-footer">Ver detalles <i class="fa fa-arrow-circle-right"></i></a>
+                  <a href="#" class="small-box-footer">Promedio <i class="fa fa-arrow-circle-right"></i></a>
                 </div>
               </div>
-              <!-- ./col -->
+              <!-- 
               <div class="col-lg-6 col-xs-6">
-                <!-- small box -->
                 <div class="small-box bg-yellow">
                   <div class="inner">
                     <h3><?php echo $lista_indicadores['produccion_x_establo']; ?></h3>
-                    <h4>Producción por Establo (&mu;)</h4>
+                    <h4>Producción por Establo </h4>
                   </div>
                   <div class="icon">
                     <i class="ion ion-stats-bars"></i>
                   </div>
-                  <a href="#" class="small-box-footer">Ver detalles <i class="fa fa-arrow-circle-right"></i></a>
+                  <a href="#" class="small-box-footer">Promedio <i class="fa fa-arrow-circle-right"></i></a>
                 </div>
               </div>
-              <!-- ./col -->
               <div class="col-lg-6 col-xs-6">
-                <!-- small box -->
+              
                 <div class="small-box bg-red">
                   <div class="inner">
                     <h3><?php echo $lista_indicadores['producion_x_ganado']; ?></h3>
-                    <h4>Producción por Ganado (&mu;)</h4>
+                    <h4>Producción por Ganado </h4>
                   </div>
                   <div class="icon">
                     <i class="ion ion-stats-bars"></i>
                   </div>
-                  <a href="#" class="small-box-footer">Ver detalles <i class="fa fa-arrow-circle-right"></i></a>
+                  <a href="#" class="small-box-footer">Promedio <i class="fa fa-arrow-circle-right"></i></a>
                 </div>
               </div>
-              <!-- ./col -->
+              -->
 
 
             </div>
@@ -113,9 +111,10 @@
                   <div class="info-box">
                     <span class="info-box-icon bg-ligth-brown"><i class="fa fa-home"></i></span>
                     <div class="info-box-content">
-                      <span class="info-box-text"> <?php echo $establo['establo_id']; ?></span>
                       <span class="info-box-number"><?php echo $establo['nombre']; ?></span>
-                      <a href="#" class="small-box-footer">Ver detalles <i class="fa fa-arrow-circle-right"></i></a>
+                      <span class="info-box-text"> Cabezas: <?php echo $establo['cantidad']; ?></span>
+                      <span class="small-box-footer"> <?php echo $establo['lugar']; ?></span>
+                      <!-- <a href="#" class="small-box-footer">Promedio <i class="fa fa-arrow-circle-right"></i></a> -->
                     </div>
                   <!-- /.info-box-content -->
                   </div>
@@ -180,7 +179,7 @@
                             <div class="">
                             <center>
                                 <a href="#" class="btn btn-xs btn-success"><span class="fa fa-eye"> </span></a>   
-                                <a href="#" class="btn btn-xs btn-warning"><span class="fa fa-pencil"> </span></a>                          
+                                <!--<a href="#" class="btn btn-xs btn-warning"><span class="fa fa-pencil"> </span></a>          -->                
                               </center>
                           </div>
                          </th>

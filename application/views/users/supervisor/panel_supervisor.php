@@ -50,7 +50,7 @@
                   <div class="icon">
                     <i class="ion ion-stats-bars"></i>
                   </div>
-                  <a href="#" class="small-box-footer">Ver detalles <i class="fa fa-arrow-circle-right"></i></a>
+                  <a href="#" class="small-box-footer">Promedio <i class="fa fa-arrow-circle-right"></i></a>
                 </div>
               </div>
               <!-- ./col -->
@@ -59,12 +59,12 @@
                 <div class="small-box bg-green">
                   <div class="inner">
                     <h3><?php echo $establos; ?></h3>
-                    <h4>Establos por Ganadero (&mu;)</h4>
+                    <h4>Establos por Ganadero</h4>
                   </div>
                   <div class="icon">
                     <i class="ion ion-stats-bars"></i>
                   </div>
-                  <a href="#" class="small-box-footer">Ver detalles <i class="fa fa-arrow-circle-right"></i></a>
+                  <a href="#" class="small-box-footer">Promedio <i class="fa fa-arrow-circle-right"></i></a>
                 </div>
               </div>
               <!-- ./col -->
@@ -73,12 +73,12 @@
                 <div class="small-box bg-yellow">
                   <div class="inner">
                     <h3><?php echo $ganados; ?></h3>
-                    <h4>Ganados por Establo (&mu;)</h4>
+                    <h4>Ganados por Establo</h4>
                   </div>
                   <div class="icon">
                     <i class="ion ion-stats-bars"></i>
                   </div>
-                  <a href="#" class="small-box-footer">Ver detalles <i class="fa fa-arrow-circle-right"></i></a>
+                  <a href="#" class="small-box-footer">Promedio <i class="fa fa-arrow-circle-right"></i></a>
                 </div>
               </div>
               <!-- ./col -->
@@ -87,12 +87,12 @@
                 <div class="small-box bg-red">
                   <div class="inner">
                     <h3><?php echo $produccion; ?></h3>
-                    <h4>Promedio de Producción (&mu;)</h4>
+                    <h4>Promedio de Producción</h4>
                   </div>
                   <div class="icon">
                     <i class="ion ion-stats-bars"></i>
                   </div>
-                  <a href="#" class="small-box-footer">Ver detalles <i class="fa fa-arrow-circle-right"></i></a>
+                  <a href="#" class="small-box-footer">Promedio <i class="fa fa-arrow-circle-right"></i></a>
                 </div>
               </div>
               <!-- ./col -->

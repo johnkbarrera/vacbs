@@ -48,7 +48,8 @@
 				                  	<div class="">
 				      	         		<center>
 				                  			<a href="#" class="btn btn-xs btn-success"><span class="fa fa-eye"> </span></a>	  
-				                  			<a href="#" class="btn btn-xs btn-warning"><span class="fa fa-pencil"> </span></a>	                  			
+				                  			<a href="<?php echo base_url();?>administrador/usuario/editar/<?php echo $usuario->usuario_id;?>" class="btn btn-xs btn-warning"><span class="fa fa-pencil"> </span></a>	
+				                  			<a href="#" class="btn btn-xs btn-danger"><span class="fa fa-trash"> </span></a>	                    			
 				                  		</center>
 				                 	</div>
 				                 </th>

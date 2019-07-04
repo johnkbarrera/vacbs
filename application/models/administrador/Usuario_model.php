@@ -33,9 +33,15 @@ class Usuario_model extends CI_Model {
 		return $this->db->insert(usuario,$data);
 	}
 
-	public function update_pass($data){
-		$this->db->where('usuario', $data['usuario']);
-		$this->db->update('usuario', $data); 
+	public function getUsuario($id){
+		$this->db->where('usuario_id', $id);
+		$resultado = $this->db->get('usuario'); 
+		return $resultado->row();
+	}
+
+	public function update($data){
+		$this->db->where('usuario_id', $data['usuario_id']);
+		return $this->db->update('usuario', $data); 
 	}
 
 

@@ -41,24 +41,27 @@ class Reporte_model extends CI_Model {
 	}
 
 
-	public function getDonut($ganadero_id){
+	public function getDonutEstados($usuario){
 
-		$sentencia = "SELECT estado_vaca, COUNT(estado_vaca) AS cantidad
-					  FROM (SELECT DISTINCT ON (ganado.ganado_id)
-	                               reproduccion.reproduccion_id, reproduccion.estado_vaca,ganado.ganado_id, establo.ganadero_id
-							FROM reproduccion 
-							JOIN ganado ON reproduccion.ganado_id = ganado.ganado_id
-							JOIN establo ON ganado.establo_id = establo.establo_id
-							WHERE establo.ganadero_id = ".$ganadero_id."
-							ORDER BY ganado_id, estado_vaca DESC, ganado_id) AS tabla1
-					  GROUP BY tabla1.estado_vaca;
+		$sentencia = "	SELECT COALESCE( estado_vaca, 'No Registran') as estado_vaca, count(*) as cantidad
+					  	FROM ganado AS g
+						LEFT JOIN (	SELECT r.ganado_id, estado_vaca FROM reproduccion AS r
+									JOIN (	SELECT ganado_id, MAX(reproduccion_id) AS reproduccion_id
+			  								FROM reproduccion
+			  								GROUP BY ganado_id) AS ultimos 
+			  						ON ultimos.reproduccion_id = r.reproduccion_id) AS estados
+	  						ON estados.ganado_id = g.ganado_id
+						JOIN establo AS e ON g.establo_id = e.establo_id
+						JOIN ganadero AS gd ON gd.ganadero_id = e.ganadero_id
+						WHERE g.estado_saca != True AND gd.usuario = '".$usuario."'	
+						GROUP BY estados.estado_vaca	
 					  ";
 
 	    $result = pg_query($sentencia);
 
 	    $data = array();
 	    while ($line = pg_fetch_array($result, null, PGSQL_ASSOC)) {
-	    	//echo $line['vaca_id'];
+
 	    	$data[] = array(
 	    		'label' => $line['estado_vaca'],
 	    		'value' => $line['cantidad']
@@ -99,9 +102,11 @@ class Reporte_model extends CI_Model {
 
 	public function getEstablosLista($usuario){	
 
-		$sentencia = "SELECT * FROM establo AS e
+		$sentencia = "SELECT e.establo_id, e.nombre, e.detalle, e.pais, e.region, count(*) as cantidad FROM establo AS e 
+					  JOIN ganado AS g ON e.establo_id = g.establo_id
 					  JOIN ganadero AS gd ON e.ganadero_id = gd.ganadero_id
-					  WHERE gd.usuario =  '".$usuario."';
+					  WHERE gd.usuario =  '".$usuario."'
+					  GROUP BY e.establo_id ;
 				      ";
 
 	    $result = pg_query($sentencia);
@@ -109,7 +114,9 @@ class Reporte_model extends CI_Model {
 	    while ($line = pg_fetch_array($result, null, PGSQL_ASSOC)) {
 	    	$data[] = array(
 	    		'establo_id' => $line['establo_id'],
-	    		'nombre' => $line['nombre']
+	    		'nombre' => $line['nombre'],
+	    		'cantidad' => $line['cantidad'],
+	    		'lugar' => $line['pais']." - ".$line['region']
 	    	);  
 	    }
 	    return $data;

@@ -58,7 +58,7 @@
       barColors: ['#f56954'],
       xkey: 'y',
       ykeys: ['a'],
-      labels: ['Litros Leche'],
+      labels: ['En producción'],
       hideHover: 'auto'
     });
 

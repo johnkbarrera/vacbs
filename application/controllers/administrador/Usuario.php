@@ -33,10 +33,6 @@ class Usuario extends CI_Controller {
 
 		if ($this->session->userdata("login") AND $this->session->userdata("perfil") == 'ADMINISTRADOR'){
 
-				$data = array(
-					'usuarios' => $this->Usuario_model->getUsuarioLista(),     // nombre array para vista
-				);
-
 				$this->load->view('layouts/header');
 				$this->load->view('users/administrador/mantenimiento_usuario/crear');
 				$this->load->view('layouts/footer');
@@ -61,7 +57,7 @@ class Usuario extends CI_Controller {
 			$perfil = $this->input->POST('perfil');
 
 			$formulario = true;
-			if (empty($nombres) || empty($apellidos) || empty($email) || empty($contrasenia) || empty($contrasenia)) {
+			if (empty($nombres) || empty($apellidos) || empty($email) || empty($contrasenia) || empty($contrasenia2)) {
 				$formulario = false;
 				$this->session->set_flashdata("error","Complete todos los campos");
 				redirect(base_url()."administrador/usuario/crear");
@@ -95,36 +91,57 @@ class Usuario extends CI_Controller {
 		}
 	}
 
-	public function mofidicar_pass(){
+	public function editar($id){
 
 		if ($this->session->userdata("login") AND $this->session->userdata("perfil") == 'ADMINISTRADOR'){
 
-			$email = $this->input->POST('correo');
-			$usuario = $email;
+			$data = array(
+					'usuario' => $this->Usuario_model->getUsuario($id),     // nombre array para vista
+			);
+
+			$this->load->view('layouts/header');
+			$this->load->view('users/administrador/mantenimiento_usuario/editar',$data);
+			$this->load->view('layouts/footer');
+			$this->load->view('users/administrador/scripts_administrador');
+
+		}
+		else{
+			redirect(base_url()."home");
+		}
+	}
+
+	public function editar_action(){
+
+		if ($this->session->userdata("login") AND $this->session->userdata("perfil") == 'ADMINISTRADOR'){
+
+			$id = $this->input->POST('id');
+			$nombres = $this->input->POST('nombres');
+			$apellidos = $this->input->POST('apellidos');
 			$contrasenia = $this->input->POST('contrasenia');
 			$contrasenia2 = $this->input->POST('contrasenia2');
-			$perfil = $this->input->POST('perfil');
 
 			$formulario = true;
-			if (empty($email) || empty($contrasenia) || empty($contrasenia)) {
+			if (empty($id) || empty($nombres) || empty($apellidos) || empty($contrasenia) || empty($contrasenia2)) {
 				$formulario = false;
 				$this->session->set_flashdata("error","Complete todos los campos");
-				redirect(base_url()."administrador/usuario/crear");
+				redirect(base_url()."administrador/usuario/editar/".$id);
 			} elseif ($formulario & ($contrasenia != $contrasenia2)) {
 				$this->session->set_flashdata("error","Las contraseñas con coinciden");
-				redirect(base_url()."administrador/usuario/crear");
+				redirect(base_url()."administrador/usuario/editar/".$id);
 			} else{
 
 				$data = array(
-					'usuario' => $usuario,
-					'contrasenia' => sha1($contrasenia),
+					'usuario_id' => $id,
+					'nombres' => $nombres,
+					'apellidos' => $apellidos,
+					'contrasenia' => sha1($contrasenia)
 				);
 
-				if ($this->Usuario_model->savepass($data)) {
+				if ($this->Usuario_model->update($data)) {
 					redirect(base_url()."administrador/usuario");
 				} else {
 					$this->session->set_flashdata("error","Error registrando datos");
-					redirect(base_url()."administrador/usuario/crear");
+					redirect(base_url()."administrador/usuario/editar/".$id);
 				}
 			}
 		}
@@ -132,5 +149,4 @@ class Usuario extends CI_Controller {
 			redirect(base_url()."home");
 		}
 	}
-
 }

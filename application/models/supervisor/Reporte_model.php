@@ -50,12 +50,16 @@ class Reporte_model extends CI_Model {
 	}
 
 	public function getEstado(){
-		$sentencia = "SELECT estado_vaca, COUNT(estado_vaca) AS cantidad
-					  FROM (SELECT DISTINCT ON (ganado_id)
-					       		   reproduccion_id, estado_vaca, ganado_id
-						    FROM   reproduccion
-					        ORDER BY ganado_id, estado_vaca DESC, ganado_id) AS tabla1
-					  GROUP BY tabla1.estado_vaca;
+		$sentencia = "	SELECT COALESCE(estado_vaca, 'No Registran') as estado_vaca , count(*) as cantidad FROM ganado AS g
+						LEFT JOIN (SELECT r.ganado_id, estado_vaca FROM reproduccion AS r
+								JOIN (SELECT ganado_id, MAX(reproduccion_id) AS reproduccion_id
+									  FROM reproduccion
+									  GROUP BY ganado_id) AS ultimos ON ultimos.reproduccion_id = r.reproduccion_id) AS estados
+							  ON estados.ganado_id = g.ganado_id
+						JOIN establo AS e ON g.establo_id = e.establo_id
+						JOIN ganadero AS gd ON gd.ganadero_id = e.ganadero_id
+						WHERE g.estado_saca != True
+						GROUP BY estados.estado_vaca	
 					 ";
 	    $result = pg_query($sentencia);
 	    $data = array();

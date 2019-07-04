@@ -33,7 +33,7 @@ class Dashboard extends CI_Controller {
 
 
 			# Donut
-			$data_donut = $this->Reporte_model->getDonut($this->session->userdata("id"));
+			$data_donut = $this->Reporte_model->getDonutEstados($this->session->userdata("usuario"));
 				//$data_bar = $this->Reporte_model->getBar();
 		
 				/*foreach ($DonutM as $row) {
