@@ -92,7 +92,30 @@ class Reporte_model extends CI_Model {
 	    return $data;
 	}
 
+	
+
 	public function getGanado_en_Pruduccion(){
+		$sentencia = "SELECT to_char(fecha,'yyyy-mm-dd') AS fecha, COUNT(*) AS ganado
+					  FROM (SELECT fecha, 1 AS cabeza_ganado
+						  	FROM produccion
+						  	GROUP BY fecha, ganado_id) AS tb
+					  GROUP BY fecha
+					  ORDER BY fecha;
+					  ";
+	    $result = pg_query($sentencia);
+	    $data = array();
+	    while ($line = pg_fetch_array($result, null, PGSQL_ASSOC)) {
+	    	//echo $line['vaca_id'];
+	    	$data[] = array(
+	    		'y' => $line['fecha'],
+	    		'a' => $line['ganado']
+	    	);  	
+	    }
+	    return $data;
+	}
+	
+
+	public function getGanado_en_Pruduccion_ordenios(){
 		$sentencia = "SELECT to_char(fecha,'yyyy-mm-dd') AS fecha, COUNT(*) AS ganados
 					  FROM produccion
 					  GROUP BY fecha
