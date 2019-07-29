@@ -25,7 +25,7 @@
             <div class="col-md-6">
               <h2>¿Qué es VacBS?</h2>
               <p>Es una plataforma diseñada en Perú, con financiamiento del Programa Nacional de Innovación Agraria, para la administración de explotaciones ganaderas de ganado Brown Swiss. Cuenta con muchas opciones de registro tanto de la parte productiva como reproductiva, teniendo la posibilidad a su vez de realizar evaluaciones de condición corporal así como del potencial genético de los animales a partir de una evaluación lineal de profundidad de ubre. </p>
-              <p><a class="btn btn-secondary" href="#" role="button">View details &raquo;</a></p>
+              <p><a class="btn btn-secondary" href="#" role="button">Ver detalles &raquo;</a></p>
             </div>
             <div class="col-md-6">
               
@@ -43,21 +43,21 @@
                         <img src="<?php echo base_url()."public/"; ?>fuentes/vaca1.png" alt="First slide">
 
                         <div class="carousel-caption">
-                          First Slide
+                          
                         </div>
                       </div>
                       <div class="item">
                         <img src="<?php echo base_url()."public/"; ?>fuentes/vaca2.png" alt="Second slide">
 
                         <div class="carousel-caption">
-                          Second Slide
+                          
                         </div>
                       </div>
                       <div class="item">
                         <img src="<?php echo base_url()."public/"; ?>fuentes/vaca1.png" alt="Third slide">
 
                         <div class="carousel-caption">
-                          Third Slide
+                          
                         </div>
                       </div>
                     </div>
@@ -95,7 +95,7 @@
               </div>
               <h3>INIA: Instituto Nacional de Innovación Agraria</h3>
               <p>El Instituto Nacional de Innovación Agraria (INIA) es un organismo técnico especializado del Ministerio de Agricultura y Riego y ente rector del Sistema Nacional de Innovación Agraria (SNIA). </p>
-              <p><a class="btn btn-secondary" href="#" role="button">View details &raquo;</a></p>
+              <p><a class="btn btn-secondary" href="#" role="button">Ver detalles &raquo;</a></p>
             </div>
             <div class="col-md-4">
 
@@ -107,7 +107,7 @@
               </div>
               <h3>Universidad del Pacífico | UP</h3>
               <p>La Universidad del Pacífico se fundó en 1962, en un contexto dominado por el debate continental sobre cuál debía ser el modelo de desarrollo para América Latina. Desde entonces,​ la Universidad del Pacífico ha sido una pieza clave en el crecimiento educativo, económico y social del país y la región. </p>
-              <p><a class="btn btn-secondary" href="#" role="button">View details &raquo;</a></p>
+              <p><a class="btn btn-secondary" href="#" role="button">Ver detalles &raquo;</a></p>
             </div>
             <div class="col-md-4">
 
@@ -119,7 +119,7 @@
               </div>
               <h3>Universidad Nacional Agraria La Molina</h3>
               <p>Bienvenido(a) a la Universidad Nacional Agraria La Molina (UNALM), conocida familiarmente por unos como “La Agraria” y por otros, como “La Molina.” Te invitamos a visitarnos -ya sea virtual o personalmente- para conocernos y descubras todo lo que ofrecemos.</p>
-              <p><a class="btn btn-secondary" href="#" role="button">View details &raquo;</a></p>
+              <p><a class="btn btn-secondary" href="#" role="button">Ver detalles &raquo;</a></p>
             </div>
           </div>
         </div>
